@@ -1,0 +1,45 @@
+extends layout
+
+block content
+
+    -data = data || {}
+
+    if errors
+        ul.my-errors
+        for error in errors
+            li= error.msg
+
+    form(action="." method="POST" class="form-configuration")
+        label(for="name") Choose a Name for your Website:
+        input(
+            type="text"
+            id="name"
+            name="name"
+            value=data.name
+            class="form-control"
+          
+        )
+        br
+        br
+        label(for="slogan") Choose a Slogan for your Website:
+        input(
+            type="text"
+            id="slogan"
+            name="slogan"
+            class="form-control"
+            value=data.slogan
+            placeholder="Slogan..."
+        )
+        br
+        br
+        label(for="nameColor") Choose a color for the text:
+        input(
+            type="color"
+            id="nameColor"
+            name="nameColor"
+            class="form-control"
+            value=data.nameColor || "#3a7091"
+        )
+        br
+        br
+        input(type="submit" class="btn btn-lg btn-dark btn-block" value="Generate")
