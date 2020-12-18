@@ -19,7 +19,16 @@ router.post('/', [
         const errors = validationResult(req);
         if (errors.isEmpty()) {
             writeDataToYml(req.body);
-            res.send('You have successfully submmitted the configuration!');
+            if(req.files){
+              var file=req.files.image;
+              file.mv('../configs/images/test.jpg',function(err){
+                if(err){
+                  res.send('Faild to upload file!');
+                }else{
+                  res.send('You have successfully submmitted the configuration!');
+                }
+              })
+            }       
         }else{
             res.render('form', {
               title: 'Configuration Step',

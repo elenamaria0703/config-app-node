@@ -9,7 +9,7 @@ block content
         for error in errors
             li= error.msg
 
-    form(action="." method="POST" class="form-configuration")
+    form(action="." method="POST" enctype="multipart/form-data" class="form-configuration")
         label(for="name") Choose a Name for your Website:
         input(
             type="text"
@@ -42,4 +42,11 @@ block content
         )
         br
         br
+        label(for="image") Choose an image:
+        input(
+            type="file"
+            id="image"
+            name="image"
+            class="form-control"
+        )
         input(type="submit" class="btn btn-lg btn-dark btn-block" value="Generate")
